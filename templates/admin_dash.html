@@ -1,0 +1,58 @@
+{% extends 'admin_base.html' %}
+{% block title %}<h1>Librarian Dashboard</h1>{% endblock %}
+
+{% block content %}
+<style>
+    /* Add your styles here */
+        /* Adjust styling as needed */
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .book-card {
+            width: calc(30% - 20px); /* Adjust width and margin as needed */
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+</style>
+
+<div class="container2">
+    <div class="row">
+      <div class="col">  
+      </div>
+      <div class="col-sm-2">
+        <a href="/admin/add_sec"><button style="position:relative; left:50px;">Add Section</button></a>
+      </div>
+      <div class="col"> 
+      </div>
+    </div>
+</div>
+<br><br>
+
+<div class="book-container">
+    {% for section in sections %}
+    <div class="book-card">
+        <div>
+            <h2>{{section.s_title}}</h2>
+            <p>{{section.s_content}}</p>
+            <!-- Add more book details as needed -->
+            
+        </div>
+        <a href='/admin/{{ section.s_id }}/view_sect'><button>Go To Section</button></a>
+        <a href='/admin/{{ section.s_id }}/delete_sect'><button>Delete Section</button></a>
+    </div>
+        {% if loop.index % 3 == 0 %} {# Create a new row after every third book #}
+            <div style="width: 100%;"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'user_base.html' %}
+{% block title %}<h1>User Dashboard</h1>{% endblock %}
+
+{% block content %}
+<style>
+    .box-container {
+        display: flex;
+        justify-content: space-between; /* Adjust as needed: space-around, space-evenly, etc. */
+    }
+
+    .box {
+        width: 100%; /* Adjust the width as needed */
+        padding: 20px;
+        height: 70%;
+        border: 1px solid #ddd; /* Add border for visualization */
+        box-sizing: border-box;
+        margin-bottom: 70px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+    }
+
+    .col1{
+        margin-left: 100px;
+    }
+
+</style>
+<br><br>
+<div class="container">
+    {% for section in sections %}
+                <div class="row">
+                <div class="col col1">
+                    <div class="box">
+                        <h2>{{section.s_title}}</h2>
+                        <p>{{section.s_content}}</p>
+                    </div>
+                    <a href='/admin/{{ section.s_id }}/view_sect'><button style="position:relative; top:-150px; left:1000px;">Go To Section</button></a>
+                    <a href='/admin/{{ section.s_id }}/delete_sect'><button style="position:relative; top:-110px; left:900px;">Delete Section</button></a>
+                </div>
+                </div>
+            {% if loop.index % 3 == 0 %} {# Create a new row after every third book #}
+            <div style="width: 100%;"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

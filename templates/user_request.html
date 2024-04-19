@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #385170;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #9fd3c7;
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(255, 255, 110, 0.5);
+            width: 350px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border-radius: 6px;
+            border: none;
+            outline-style: none;
+            background: #ececec;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 150px;
+        }
+
+        button:hover {
+            background-color: #142d4c;
+        }
+
+        #in:hover {
+            color: #142d4c;
+        }
+
+        #an {
+            text-align: center;
+            padding: 25px;
+            color: #142d4c;
+        }
+
+        #in {
+            text-decoration: none;
+            color: gray;
+        }
+
+        .fourth-color {
+            color: #142d4c;
+        }
+
+        #btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            margin-right: 160px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form action='/user/{{ user.id }}/{{ book.b_id }}/request_book' method="post">
+            <h1 id='an'>Request for the {{ book.b_title }} Book</h1>
+                <label for="2days">2 days</label>
+                <input type="radio" name="duration" id="2days" value="2 days"><br>
+
+                <label for="3days">3 days</label>
+                <input type="radio" name="duration" id="3days" value="3 days"><br>
+
+                <label for="4days">4 days</label>
+                <input type="radio" name="duration" id="4days" value="4 days" checked><br>
+              
+            <div id="btn">
+                <button type="submit">Send Request</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{% extends 'admin_base.html' %}
+{% block title %}<h1>Librarian Dashboard</h1>{% endblock %}
+
+{% block content %}
+<style>
+    /* Add your styles here */
+        /* Adjust styling as needed */
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .book-card {
+            width: calc(30% - 20px); /* Adjust width and margin as needed */
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+</style>
+
+<div class="container2">
+    <div class="row">
+      <div class="col">  
+      </div>
+      <div class="col-sm-2">
+        <a href='/admin/{{ s_id }}/add_book'><button style="position:relative; left:50px;">Add Book</button></a>
+      </div>
+      <div class="col"> 
+      </div>
+    </div>
+</div>
+<br><br>
+
+<div class="book-container">
+    {% for book in s_books %}
+    <div class="book-card">
+        <div>
+            <h2>{{ book.b_id }}</h2>
+                <p>{{ book.b_title }}</p>
+                <p>{{ book.b_author }}</p>
+                <p>{{ book.b_content }}</p>
+            <!-- Add more book details as needed -->
+        </div>
+        <a href='/admin/{{ s_id }}/{{ book.b_id }}/delete_book'><button>Delete Book</button></a>
+    </div>
+        {% if loop.index % 3 == 0 %} {# Create a new row after every third book #}
+            <div style="width: 100%;"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}

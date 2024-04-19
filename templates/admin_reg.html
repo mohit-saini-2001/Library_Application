@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign Up</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background:#385170;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background:#9fd3c7;
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(255,255,110, 0.5);
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border-radius: 6px;
+            border:none;
+            outline-style: none;
+            background: #ececec;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left:150px;
+
+        }
+
+        button:hover {
+            background-color: #142d4c;
+        }
+
+        #in:hover {
+            color: #142d4c;
+        }
+
+        .r3{
+            width:350px;
+        }
+        div{
+            margin:70px;
+        }
+
+        #an{
+            text-align:center;
+            padding:25px;
+        }
+        #in{
+            text-decoration:none;
+            color:gray;
+        }
+
+        .fourth-color { 
+            color: #142d4c; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+    <form class='r3' action="admin_registration" method="post">
+        <h1 id='an' class='fourth-color'>Register as Admin</h1>
+        
+        <input type="text" id="name" name="name" placeholder='Name' required>
+
+        <input type="text" id="username" name="username" placeholder='Username' required>
+        {% with messages = get_flashed_messages(with_categories=true, category_filter=["no_user"]) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <input type="text" id="email" name="admin_email" placeholder='Email' required>
+        {% with messages = get_flashed_messages(with_categories=true, category_filter=["email_error"]) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <input type="password" id="password" name="password" placeholder='Password'  required>
+        {% with messages = get_flashed_messages(with_categories=true, category_filter=["pwd_error"]) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <button type="submit">Sign Up</button>
+
+        <p class='fourth-color' id='an'>Already have an account? <a href='/admin_login' id='in'>Sign in now.</a></p>
+    </form>
+    </div>
+</body>
+</html>
+

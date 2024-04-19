@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #385170;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #9fd3c7;
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(255, 255, 110, 0.5);
+            width: 350px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border-radius: 6px;
+            border: none;
+            outline-style: none;
+            background: #ececec;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 150px;
+        }
+
+        button:hover {
+            background-color: #142d4c;
+        }
+
+        #in:hover {
+            color: #142d4c;
+        }
+
+        #an {
+            text-align: center;
+            padding: 25px;
+            color: #142d4c;
+        }
+
+        #in {
+            text-decoration: none;
+            color: gray;
+        }
+
+        .fourth-color {
+            color: #142d4c;
+        }
+
+        #btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            margin-right: 160px;
+        }
+
+        .sec_success{
+            background-color: #f8dadc;
+            border-color: #f4b0b7;
+            color: #791c25;
+            font-size: 0.8rem;
+            border-radius: 0.25rem;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            position: relative;
+            left: 160px;
+            top: 200px;
+            }
+    </style>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=true, category_filter=["sec_success"]) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div>
+        <form action="/admin/add_sec" method="post">
+            <h1 id='an'>Add new section</h1>
+
+            <input type="text" id="title" name="title" placeholder='Title' required>
+
+            <!-- <input type="date" id="date" name="date" required> -->
+
+            <input type="text" id="number" name="description" placeholder='Description' required>
+
+            <div id="btn">
+                <button type="reset">Cancel</button>
+                <a href="/admin/<s_id>/add_book"><button type="submit">Add</button></a>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
